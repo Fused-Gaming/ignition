@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `IgnitionProfile::fused_gaming()` preset — Windows + RTX 3080 + 16 GB + 12 cores, optimised for stakereload.com, stakereloadxs.com, and gambareload.com
 - `examples/fused_gaming.rs` — branded demo visiting all three Fused Gaming domains
 - Add `add_init_script` to `Page` for scripts before navigation
+- `IgnitionProfile::stakereloadxs()` preset — Windows + RTX 4080 + 32 GB + 16 cores + Chrome 130, tuned for stakereloadxs.com (XS exclusive tier)
+- `examples/stakereloadxs.rs` — dedicated demo for stakereloadxs.com with fingerprint verification output
 
 ## [0.8.0] 2025-11-28
 

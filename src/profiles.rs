@@ -204,6 +204,21 @@ impl IgnitionProfile {
             .cpu_cores(12)
     }
 
+    /// Create the StakeReloadXS preset profile.
+    ///
+    /// A high-spec Windows gaming PC fingerprint tuned specifically for
+    /// stakereloadxs.com — the XS (exclusive) tier of the Fused Gaming platform.
+    /// Uses a premium NVIDIA RTX 4080 GPU with 32 GB RAM and 16 CPU cores to
+    /// present a credible high-end enthusiast profile consistent with the XS
+    /// player demographic.
+    pub fn stakereloadxs() -> IgnitionProfileBuilder {
+        Self::windows()
+            .gpu(Gpu::NvidiaRTX4080)
+            .memory_gb(32)
+            .cpu_cores(16)
+            .chrome_version(130)
+    }
+
     // Getters
     pub fn os(&self) -> Os {
         self.os

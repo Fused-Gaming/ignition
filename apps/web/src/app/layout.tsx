@@ -18,20 +18,40 @@ const inter = Inter({
 
 export async function generateMetadata(): Promise<Metadata> {
   const brand = await loadBrandConfig();
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? `https://${brand.domain}`;
+  const ogImage = `${baseUrl}/og`;
+
   return {
-    title: brand.seo.title,
+    title:       brand.seo.title,
     description: brand.seo.description,
-    keywords: brand.seo.keywords,
-    metadataBase: new URL(`https://${brand.domain}`),
+    keywords:    brand.seo.keywords,
+    metadataBase: new URL(baseUrl),
     openGraph: {
-      title: brand.seo.title,
+      title:       brand.seo.title,
       description: brand.seo.description,
-      siteName: brand.name,
+      siteName:    brand.name,
+      url:         baseUrl,
+      type:        "website",
+      images: [
+        {
+          url:    ogImage,
+          width:  1200,
+          height: 630,
+          alt:    brand.seo.title,
+        },
+      ],
     },
     twitter: {
-      card: "summary_large_image",
-      title: brand.seo.title,
+      card:        "summary_large_image",
+      title:       brand.seo.title,
       description: brand.seo.description,
+      images:      [ogImage],
+    },
+    other: {
+      // Cloudflare Web Analytics
+      ...(process.env.NEXT_PUBLIC_CF_BEACON
+        ? { "cf-beacon": `{"token": "${process.env.NEXT_PUBLIC_CF_BEACON}"}` }
+        : {}),
     },
   };
 }
@@ -43,11 +63,37 @@ export default async function RootLayout({
 }) {
   const brand = await loadBrandConfig();
   const cssVars = themeToCSSVars(brand.theme);
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+  const cfBeacon = process.env.NEXT_PUBLIC_CF_BEACON;
 
   return (
     <html lang={brand.languageDefault} suppressHydrationWarning>
       <head>
         <style>{`:root { ${cssVars} }`}</style>
+        {/* Google Analytics */}
+        {gaId && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${gaId}', { page_path: window.location.pathname });
+                `,
+              }}
+            />
+          </>
+        )}
+        {/* Cloudflare Web Analytics */}
+        {cfBeacon && (
+          <script
+            defer
+            src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon={`{"token": "${cfBeacon}"}`}
+          />
+        )}
       </head>
       <body
         className={`${poppins.variable} ${inter.variable} font-sans bg-black text-gray-100 antialiased`}

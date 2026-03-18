@@ -13,11 +13,12 @@ to reduce the detection footprint of automated browser sessions on:
 - **[stakereload.com](https://stakereload.com)**
 - **[stakereloadxs.com](https://stakereloadxs.com)**
 - **[gambareload.com](https://gambareload.com)**
+- **[stakeclaimbot.com](https://stakeclaimbot.com)**
 
 ## Features
 
 - **Protocol-Level Stealth**: Patches CDP at the transport layer, not via JavaScript wrappers
-- **Fused Gaming Profile**: Pre-built `IgnitionProfile::fused_gaming()` preset for all three domains
+- **Fused Gaming Profile**: Pre-built presets — `fused_gaming()` for reload domains, `stakeclaimbot()` for the claim portal
 - **Fingerprint Profiles**: Windows, Linux, macOS profiles with consistent hardware fingerprints
 - **Human Interaction Engine**: Physics-based Bezier mouse curves and realistic typing patterns
 - **Request Interception**: Built-in request modification and blocking capabilities

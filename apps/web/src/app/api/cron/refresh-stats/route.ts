@@ -107,8 +107,17 @@ export async function GET(req: NextRequest) {
   });
 }
 
-/** GET /api/cron/refresh-stats?cached=1 — return last cached snapshot without re-running */
-export async function POST() {
+/** POST /api/cron/refresh-stats — return last cached snapshot without re-running */
+export async function POST(req: NextRequest) {
+  // ── Auth ────────────────────────────────────────────────────────────────────
+  const cronSecret = process.env.CRON_SECRET;
+  if (cronSecret) {
+    const auth = req.headers.get("authorization");
+    if (auth !== `Bearer ${cronSecret}`) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+  }
+
   if (!lastSnapshot) {
     return NextResponse.json({ ok: false, message: "No snapshot yet. Call GET first." }, { status: 404 });
   }

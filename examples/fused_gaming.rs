@@ -1,6 +1,6 @@
-//! Fused Gaming Ignition — branded demo for stakereload.com, stakereloadxs.com, gambareload.com
+//! Fused Gaming Ignition — branded demo for stakereload.com, stakereloadxs.com, gambareload.com, gambarewards.com
 //!
-//! Demonstrates applying the Fused Gaming profile and navigating the three
+//! Demonstrates applying the Fused Gaming profile and navigating the four
 //! branded gaming platforms with full stealth mode active.
 //!
 //! # Usage
@@ -18,6 +18,7 @@ const TARGETS: &[&str] = &[
     "https://stakereload.com",
     "https://stakereloadxs.com",
     "https://gambareload.com",
+    "https://gambarewards.com",
 ];
 
 #[tokio::main]

@@ -17,8 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- `IgnitionProfile::fused_gaming()` preset — Windows + RTX 3080 + 16 GB + 12 cores, optimised for stakereload.com, stakereloadxs.com, and gambareload.com
-- `examples/fused_gaming.rs` — branded demo visiting all three Fused Gaming domains
+- `IgnitionProfile::fused_gaming()` preset — Windows + RTX 3080 + 16 GB + 12 cores, optimised for stakereload.com, stakereloadxs.com, gambareload.com, and gambarewards.com
+- `IgnitionProfile::gambarewards()` preset — Windows + RTX 4080 + 16 GB + 12 cores, targeted at gambarewards.com
+- `examples/fused_gaming.rs` — branded demo visiting all four Fused Gaming domains
 - Add `add_init_script` to `Page` for scripts before navigation
 
 ## [0.8.0] 2025-11-28

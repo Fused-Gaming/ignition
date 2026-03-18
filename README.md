@@ -13,6 +13,7 @@ to reduce the detection footprint of automated browser sessions on:
 - **[stakereload.com](https://stakereload.com)**
 - **[stakereloadxs.com](https://stakereloadxs.com)**
 - **[gambareload.com](https://gambareload.com)**
+- **[gambarewards.com](https://gambarewards.com)**
 
 ## Features
 
@@ -93,6 +94,7 @@ async fn main() -> anyhow::Result<()> {
 | [stakereload.com](https://stakereload.com) | Stake reload bonus tracker |
 | [stakereloadxs.com](https://stakereloadxs.com) | Stake reload XS platform |
 | [gambareload.com](https://gambareload.com) | Gamba reload bonus tracker |
+| [gambarewards.com](https://gambarewards.com) | Gamba rewards platform |
 
 Run the branded demo:
 

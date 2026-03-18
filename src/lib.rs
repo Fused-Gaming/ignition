@@ -4,7 +4,8 @@
 //!
 //! Designed for use with [stakereload.com](https://stakereload.com),
 //! [stakereloadxs.com](https://stakereloadxs.com), and
-//! [gambareload.com](https://gambareload.com).
+//! [gambareload.com](https://gambareload.com), and
+//! [gambarewards.com](https://gambarewards.com).
 //!
 //! # Example
 //! ```no_run

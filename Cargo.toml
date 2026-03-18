@@ -6,7 +6,7 @@ autotests = false
 edition = "2021"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
-description = "Fused Gaming Ignition – Stealth browser automation for gaming platforms"
+description = "Fused Gaming Ignition – Stealth browser automation for gaming platforms (hedgehog.com, stakereload.com)"
 authors = ["Fused Gaming"]
 repository = "https://github.com/Fused-Gaming/ignition"
 keywords = ["chrome", "automation", "stealth", "gaming", "ignition"]
@@ -81,6 +81,9 @@ _fetcher-native-tokio = ["fetcher", "chromiumoxide_fetcher/_native-tokio"]
 
 [[example]]
 name = "fused_gaming"
+
+[[example]]
+name = "hedgehog"
 
 [[example]]
 name = "wiki-async-std"

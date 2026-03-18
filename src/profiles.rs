@@ -204,6 +204,19 @@ impl IgnitionProfile {
             .cpu_cores(12)
     }
 
+    /// Create the Hedgehog preset profile.
+    ///
+    /// A realistic Windows gaming PC fingerprint optimised for hedgehog.com.
+    /// Uses a high-trust NVIDIA RTX 4080 GPU with 32 GB RAM and 16 CPU cores
+    /// to match a typical high-end gaming enthusiast profile.
+    pub fn hedgehog() -> IgnitionProfileBuilder {
+        Self::windows()
+            .gpu(Gpu::NvidiaRTX4080)
+            .memory_gb(32)
+            .cpu_cores(16)
+            .chrome_version(131)
+    }
+
     // Getters
     pub fn os(&self) -> Os {
         self.os
@@ -251,7 +264,7 @@ impl IgnitionProfile {
         let mut script = format!(
             r#"
             (function() {{
-                // === Fused Gaming Ignition – HARDWARE HARMONY ===
+                // === Fused Gaming Ignition – HARDWARE HARMONY (hedgehog.com / stakereload.com) ===
                 // Profile: {ua}
 
                 // 0. CDP Marker Cleanup (run once at startup)

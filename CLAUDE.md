@@ -6,6 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Fused Gaming Ignition** (`ignition`) is a Rust-based fork of `chromiumoxide` specialized for hardened browser automation on the Fused Gaming platform. It provides protocol-level stealth modifications to the Chrome DevTools Protocol (CDP) client to reduce the detection footprint of automated browser sessions on:
 
+- **hedgehog.com**
 - **stakereload.com**
 - **stakereloadxs.com**
 - **gambareload.com**
@@ -63,7 +64,7 @@ This is a Cargo workspace with multiple crates:
 2. **`IgnitionProfile`** (`src/profiles.rs`) - Browser fingerprint profiles
    - Builder pattern for customizing OS, GPU, hardware specs
    - Generates User-Agent and bootstrap JS script for spoofing
-   - Presets: `fused_gaming()`, `windows()`, `linux()`, `macos_arm()`, `macos_intel()`
+   - Presets: `hedgehog()`, `fused_gaming()`, `windows()`, `linux()`, `macos_arm()`, `macos_intel()`
 
 3. **`Page`** (`src/page.rs`) - Base CDP page abstraction (from chromiumoxide)
    - `enable_stealth_mode()` - Quick stealth setup with sensible defaults

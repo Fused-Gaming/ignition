@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { loadBrandConfig } from "@/lib/brand";
 
 interface PaymentRequestBody {
   packageId: string;
@@ -18,7 +19,20 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: "Invalid Telegram username" }, { status: 400 });
     }
 
-    if (!body.price || body.price <= 0) {
+    // Load brand config and validate package
+    const brand = await loadBrandConfig();
+    const validPackage = brand.creditPackages.find((pkg) => pkg.id === body.packageId);
+
+    if (!validPackage) {
+      return NextResponse.json({ message: "Invalid package" }, { status: 400 });
+    }
+
+    // Validate that submitted package details match the configured package
+    if (
+      validPackage.name !== body.packageName ||
+      validPackage.price !== body.price ||
+      validPackage.credits !== body.credits
+    ) {
       return NextResponse.json({ message: "Invalid package" }, { status: 400 });
     }
 
@@ -29,7 +43,7 @@ export async function POST(req: NextRequest) {
 
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? `https://${process.env.NEXT_PUBLIC_BRAND ?? "stakereloadxs"}.com`;
 
-    // Create NOWPayments invoice
+    // Create NOWPayments invoice using validated package data
     const response = await fetch("https://api.nowpayments.io/v1/invoice", {
       method: "POST",
       headers: {
@@ -37,10 +51,10 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        price_amount: body.price,
+        price_amount: validPackage.price,
         price_currency: "usd",
-        order_id: `${body.packageId}-${Date.now()}`,
-        order_description: `${body.packageName} — ${body.telegram}`,
+        order_id: `${validPackage.id}-${Date.now()}`,
+        order_description: `${validPackage.name} — ${body.telegram}`,
         success_url: `${baseUrl}/payment-success`,
         cancel_url: `${baseUrl}/payment-cancel`,
         is_fixed_rate: true,

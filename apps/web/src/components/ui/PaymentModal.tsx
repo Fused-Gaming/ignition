@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { BrandConfig } from "@/types/brand";
+import { isValidRedirectUrl } from "@/lib/validation";
 
 interface PaymentModalProps {
   pkg: BrandConfig["creditPackages"][number] | null;
@@ -44,8 +45,11 @@ export default function PaymentModal({ pkg, onClose, brand }: PaymentModalProps)
       }
 
       const data = await res.json();
-      if (data?.paymentUrl) {
+      if (data?.paymentUrl && isValidRedirectUrl(data.paymentUrl, ["nowpayments.io"])) {
         window.location.href = data.paymentUrl;
+      } else if (data?.paymentUrl) {
+        // URL failed validation - treat as error
+        throw new Error("Invalid payment URL received from server");
       } else {
         setStep("success");
       }

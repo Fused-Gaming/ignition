@@ -1,4 +1,4 @@
-use chaser_oxide::browser::{Browser, BrowserConfig};
+use ignition::browser::{Browser, BrowserConfig};
 use futures::StreamExt;
 
 #[async_std::main]

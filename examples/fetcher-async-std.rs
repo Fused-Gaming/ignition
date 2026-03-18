@@ -1,7 +1,7 @@
 use std::path::Path;
 
-use chaser_oxide::browser::{Browser, BrowserConfig};
-use chaser_oxide::fetcher::{BrowserFetcher, BrowserFetcherOptions};
+use ignition::browser::{Browser, BrowserConfig};
+use ignition::fetcher::{BrowserFetcher, BrowserFetcherOptions};
 use futures::StreamExt;
 
 #[async_std::main]

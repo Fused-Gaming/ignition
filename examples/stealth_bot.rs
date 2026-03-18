@@ -1,11 +1,11 @@
 use anyhow::Result;
-use chaser_oxide::{Browser, BrowserConfig, ChaserPage};
+use ignition::{Browser, BrowserConfig, IgnitionPage};
 use futures::StreamExt;
 use std::time::Duration;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    println!("Launching chaser-oxide Stealth Browser...");
+    println!("Launching Fused Gaming Ignition Stealth Browser...");
     let (browser, mut handler) = Browser::launch(
         BrowserConfig::builder()
             .viewport(None)
@@ -35,28 +35,28 @@ async fn main() -> Result<()> {
     // Wait for page to fully load
     tokio::time::sleep(Duration::from_secs(3)).await;
 
-    // Upgrade to ChaserPage
-    let chaser = ChaserPage::new(page);
+    // Upgrade to IgnitionPage
+    let ignition = IgnitionPage::new(page);
 
     // Human-like mouse movement
     println!("Simulating human mouse movement...");
-    chaser.move_mouse_human(500.0, 300.0).await?;
+    ignition.move_mouse_human(500.0, 300.0).await?;
 
     // Test stealth execution
     println!("\nReading values from the PAGE (main world sees spoofed values):");
 
     // Read what the site's JavaScript sees
-    let user_agent = chaser.evaluate_stealth("navigator.userAgent").await?;
+    let user_agent = ignition.evaluate_stealth("navigator.userAgent").await?;
     println!("  navigator.userAgent = {:?}", user_agent);
 
     // Wait and take screenshot
     println!("\nWaiting for page to render...");
     tokio::time::sleep(Duration::from_secs(5)).await;
 
-    chaser
+    ignition
         .raw_page()
         .save_screenshot(
-            chaser_oxide::page::ScreenshotParams::builder().build(),
+            ignition::page::ScreenshotParams::builder().build(),
             "stealth_test.png",
         )
         .await?;

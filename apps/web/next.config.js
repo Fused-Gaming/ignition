@@ -1,6 +1,5 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   // Multi-brand: brand key injected at build time or via env
   env: {
     NEXT_PUBLIC_BRAND: process.env.NEXT_PUBLIC_BRAND || "stakereloadxs",
@@ -28,4 +27,4 @@ const nextConfig: NextConfig = {
   transpilePackages: ["@fused-gaming/ui", "@fused-gaming/branding", "@fused-gaming/copy"],
 };
 
-export default nextConfig;
+module.exports = nextConfig;

@@ -18,6 +18,7 @@ to reduce the detection footprint of automated browser sessions on:
 
 - **Protocol-Level Stealth**: Patches CDP at the transport layer, not via JavaScript wrappers
 - **Fused Gaming Profile**: Pre-built `IgnitionProfile::fused_gaming()` preset for all three domains
+- **GambaReload Profile**: Dedicated `IgnitionProfile::gambareload()` preset with a distinct modern fingerprint for gambareload.com
 - **Fingerprint Profiles**: Windows, Linux, macOS profiles with consistent hardware fingerprints
 - **Human Interaction Engine**: Physics-based Bezier mouse curves and realistic typing patterns
 - **Request Interception**: Built-in request modification and blocking capabilities
@@ -94,10 +95,14 @@ async fn main() -> anyhow::Result<()> {
 | [stakereloadxs.com](https://stakereloadxs.com) | Stake reload XS platform |
 | [gambareload.com](https://gambareload.com) | Gamba reload bonus tracker |
 
-Run the branded demo:
+Run the branded demos:
 
 ```bash
+# All three Fused Gaming domains
 cargo run --example fused_gaming
+
+# GambaReload-specific demo (RTX 4080, 32 GB, Chrome 132)
+cargo run --example gambareload
 ```
 
 ## API Reference
@@ -111,6 +116,9 @@ use ignition::{IgnitionProfile, Gpu};
 
 // Fused Gaming preset (Windows, RTX 3080, 16 GB, 12 cores)
 let profile = IgnitionProfile::fused_gaming().build();
+
+// GambaReload preset (Windows, RTX 4080, 32 GB, 16 cores, Chrome 132)
+let gamba_profile = IgnitionProfile::gambareload().build();
 
 // Other OS presets
 let windows = IgnitionProfile::windows().build();

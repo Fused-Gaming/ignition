@@ -3,8 +3,9 @@
 //! Stealth browser automation for gaming platforms — built on Chrome DevTools Protocol (CDP).
 //!
 //! Designed for use with [stakereload.com](https://stakereload.com),
-//! [stakereloadxs.com](https://stakereloadxs.com), and
-//! [gambareload.com](https://gambareload.com).
+//! [stakereloadxs.com](https://stakereloadxs.com),
+//! [gambareload.com](https://gambareload.com), and
+//! [stakeclaimbot.com](https://stakeclaimbot.com).
 //!
 //! # Example
 //! ```no_run

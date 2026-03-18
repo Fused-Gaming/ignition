@@ -204,6 +204,23 @@ impl IgnitionProfile {
             .cpu_cores(12)
     }
 
+    /// Create the StakeClaimBot preset profile.
+    ///
+    /// A realistic Windows gaming PC fingerprint optimised for stakeclaimbot.com.
+    /// Uses a high-trust NVIDIA RTX 4080 GPU with 32 GB RAM and 16 CPU cores to
+    /// appear as a modern high-end gaming workstation — a common profile among
+    /// serious casino bonus claimers. Chrome version is pinned to a recent stable
+    /// release to pass client-hints validation on the claim portal.
+    pub fn stakeclaimbot() -> IgnitionProfileBuilder {
+        Self::windows()
+            .gpu(Gpu::NvidiaRTX4080)
+            .memory_gb(32)
+            .cpu_cores(16)
+            .chrome_version(131)
+            .locale("en-US")
+            .timezone("America/Chicago")
+    }
+
     // Getters
     pub fn os(&self) -> Os {
         self.os

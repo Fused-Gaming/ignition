@@ -50,7 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       // Cloudflare Web Analytics
       ...(process.env.NEXT_PUBLIC_CF_BEACON
-        ? { "cf-beacon": `{"token": "${process.env.NEXT_PUBLIC_CF_BEACON}"}` }
+        ? { "cf-beacon": JSON.stringify({ token: process.env.NEXT_PUBLIC_CF_BEACON }) }
         : {}),
     },
   };
@@ -80,7 +80,7 @@ export default async function RootLayout({
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());
-                  gtag('config', '${gaId}', { page_path: window.location.pathname });
+                  gtag('config', ${JSON.stringify(gaId)}, { page_path: window.location.pathname });
                 `,
               }}
             />
@@ -91,7 +91,7 @@ export default async function RootLayout({
           <script
             defer
             src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon={`{"token": "${cfBeacon}"}`}
+            data-cf-beacon={JSON.stringify({ token: cfBeacon })}
           />
         )}
       </head>

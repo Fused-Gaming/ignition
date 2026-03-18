@@ -4,6 +4,13 @@ Cargo.lock
 .idea/
 .cache/
 
+# Node.js
+node_modules/
+package-lock.json
+.next/
+.turbo/
+*.tsbuildinfo
+
 # Letta AI
 .letta/
 *.af

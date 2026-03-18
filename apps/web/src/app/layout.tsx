@@ -1,20 +1,6 @@
 import type { Metadata } from "next";
-import { Poppins, Inter } from "next/font/google";
 import { loadBrandConfig, themeToCSSVars } from "@/lib/brand";
 import "./globals.css";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-poppins",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
 
 export async function generateMetadata(): Promise<Metadata> {
   const brand = await loadBrandConfig();
@@ -96,7 +82,7 @@ export default async function RootLayout({
         )}
       </head>
       <body
-        className={`${poppins.variable} ${inter.variable} font-sans bg-black text-gray-100 antialiased`}
+        className="font-sans bg-black text-gray-100 antialiased"
       >
         {children}
         {/* Tawk.to chat — injected per brand */}

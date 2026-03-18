@@ -16,7 +16,7 @@ import {
   brandPalettes,
   generateCSSVars,
   getPaletteForTone,
-} from "../../../packages/tokens/src/tokens";
+} from "@fused-gaming/tokens";
 
 export type DeployProvider = "vercel" | "vps" | "docker";
 export type DeployStatus = "idle" | "building" | "deployed" | "error";

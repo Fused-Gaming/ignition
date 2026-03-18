@@ -2,7 +2,7 @@
 
 import { useAdminStore } from "@/lib/brandStore";
 import TokenSwatch from "@/components/ui/TokenSwatch";
-import type { BrandPalette, BrandTone } from "../../../../packages/tokens/src/tokens";
+import type { BrandPalette, BrandTone } from "@fused-gaming/tokens";
 
 const TOKEN_GROUPS: { label: string; keys: (keyof BrandPalette)[] }[] = [
   {

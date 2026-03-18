@@ -80,5 +80,7 @@ pub use crate::stealth::*;
 pub mod profiles;
 pub use crate::profiles::*;
 
+pub mod stakereload;
+
 // Re-export useful CDP types for request interception
 pub use chromiumoxide_cdp::cdp::browser_protocol::network::ResourceType;

@@ -13,7 +13,9 @@ to reduce the detection footprint of automated browser sessions on:
 - **[stakereload.com](https://stakereload.com)**
 - **[stakereloadxs.com](https://stakereloadxs.com)**
 - **[gambareload.com](https://gambareload.com)**
+- **[stakeclaimbot.com](https://stakeclaimbot.com)**
 - **[gambarewards.com](https://gambarewards.com)**
+- **[hedgedhog.com](https://hedgedhog.com)**
 
 ## Features
 

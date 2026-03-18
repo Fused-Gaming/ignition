@@ -204,6 +204,29 @@ impl IgnitionProfile {
             .cpu_cores(12)
     }
 
+    /// Profile preset tuned for **stakereload.com**.
+    ///
+    /// Identical hardware to [`fused_gaming`](Self::fused_gaming) but scoped
+    /// to the Standard site variant for clarity in multi-site automation code.
+    pub fn stakereload() -> IgnitionProfileBuilder {
+        Self::windows()
+            .gpu(Gpu::NvidiaRTX3080)
+            .memory_gb(16)
+            .cpu_cores(12)
+    }
+
+    /// Profile preset tuned for **stakereloadxs.com**.
+    ///
+    /// Uses a slightly different RTX 4080 GPU fingerprint to present a distinct
+    /// hardware identity from the Standard variant, reducing cross-site
+    /// correlation signals that some anti-bot systems track.
+    pub fn stakereloadxs() -> IgnitionProfileBuilder {
+        Self::windows()
+            .gpu(Gpu::NvidiaRTX4080)
+            .memory_gb(16)
+            .cpu_cores(12)
+    }
+
     // Getters
     pub fn os(&self) -> Os {
         self.os

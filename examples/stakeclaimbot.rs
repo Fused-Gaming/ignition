@@ -207,7 +207,7 @@ async fn main() -> Result<()> {
         // Human-like dwell before clicking
         tokio::time::sleep(Duration::from_millis(250)).await;
 
-        println!("[6/8] Clicking claim button…");
+        println!("[7/8] Clicking claim button…");
         ignition
             .click_human(x, y)
             .await
@@ -226,13 +226,13 @@ async fn main() -> Result<()> {
             _ => println!("      Claim button no longer in DOM — claim likely successful."),
         }
     } else {
-        println!("[6/8] Claim button not ready — skipping click.");
+        println!("[7/8] Claim button not ready — skipping click.");
     }
 
     // ------------------------------------------------------------------
-    // 9. Verify stealth signatures are intact after interaction
+    // 8. Verify stealth signatures are intact after interaction
     // ------------------------------------------------------------------
-    println!("[7/8] Verifying stealth signatures post-interaction…");
+    println!("[8/8] Verifying stealth signatures post-interaction…");
     let webdriver: Option<serde_json::Value> =
         ignition.evaluate("navigator.webdriver").await?;
     println!("      navigator.webdriver : {:?}", webdriver);
@@ -250,9 +250,9 @@ async fn main() -> Result<()> {
     println!("      deviceMemory (GB)    : {:?}", device_memory);
 
     // ------------------------------------------------------------------
-    // 10. Summary
+    // Summary
     // ------------------------------------------------------------------
-    println!("[8/8] StakeClaimBot run complete.");
+    println!("\n[✓] StakeClaimBot run complete.");
     println!();
     println!("Workflow actions executed:");
     println!("  [OK] StakeClaimBot profile applied (RTX 4080, 32 GB, 16 cores, Chrome 131)");

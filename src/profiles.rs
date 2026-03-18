@@ -204,6 +204,20 @@ impl IgnitionProfile {
             .cpu_cores(12)
     }
 
+    /// Create the GambaReload-specific profile.
+    ///
+    /// A distinct Windows gaming PC fingerprint tuned for gambareload.com.
+    /// Uses a newer NVIDIA RTX 4080 GPU with Chrome 132, 32 GB RAM and 16 CPU cores
+    /// to present a high-credibility, modern gaming rig that differs from the
+    /// shared `fused_gaming()` fingerprint.
+    pub fn gambareload() -> IgnitionProfileBuilder {
+        Self::windows()
+            .chrome_version(132)
+            .gpu(Gpu::NvidiaRTX4080)
+            .memory_gb(32)
+            .cpu_cores(16)
+    }
+
     // Getters
     pub fn os(&self) -> Os {
         self.os

@@ -20,7 +20,7 @@ to reduce the detection footprint of automated browser sessions on:
 ## Features
 
 - **Protocol-Level Stealth**: Patches CDP at the transport layer, not via JavaScript wrappers
-- **Fused Gaming Profile**: Pre-built `IgnitionProfile::fused_gaming()` preset for all three domains
+- **Fused Gaming Profile**: Pre-built `IgnitionProfile::fused_gaming()` preset for all six domains
 - **Fingerprint Profiles**: Windows, Linux, macOS profiles with consistent hardware fingerprints
 - **Human Interaction Engine**: Physics-based Bezier mouse curves and realistic typing patterns
 - **Request Interception**: Built-in request modification and blocking capabilities
@@ -96,7 +96,9 @@ async fn main() -> anyhow::Result<()> {
 | [stakereload.com](https://stakereload.com) | Stake reload bonus tracker |
 | [stakereloadxs.com](https://stakereloadxs.com) | Stake reload XS platform |
 | [gambareload.com](https://gambareload.com) | Gamba reload bonus tracker |
+| [stakeclaimbot.com](https://stakeclaimbot.com) | Stake claim bot automation |
 | [gambarewards.com](https://gambarewards.com) | Gamba rewards platform |
+| [hedgedhog.com](https://hedgedhog.com) | Hedged hog platform |
 
 Run the branded demo:
 

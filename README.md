@@ -94,11 +94,16 @@ async fn main() -> anyhow::Result<()> {
 | [stakereload.com](https://stakereload.com) | Stake reload bonus tracker |
 | [stakereloadxs.com](https://stakereloadxs.com) | Stake reload XS platform |
 | [gambareload.com](https://gambareload.com) | Gamba reload bonus tracker |
+| [stakeclaimbot.com](https://stakeclaimbot.com) | Stake claim bot portal |
 
-Run the branded demo:
+Run the branded demos:
 
 ```bash
+# Reload domains demo (Windows + RTX 3080 profile)
 cargo run --example fused_gaming
+
+# StakeClaimBot portal demo (Windows + RTX 4080 profile)
+cargo run --example stakeclaimbot
 ```
 
 ## API Reference

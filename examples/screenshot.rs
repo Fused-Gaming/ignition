@@ -1,7 +1,7 @@
-use ignition::browser::{Browser, BrowserConfig};
-use ignition::page::ScreenshotParams;
 use chromiumoxide_cdp::cdp::browser_protocol::page::CaptureScreenshotFormat;
 use futures::StreamExt;
+use ignition::browser::{Browser, BrowserConfig};
+use ignition::page::ScreenshotParams;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {

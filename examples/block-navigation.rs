@@ -4,6 +4,7 @@ use std::time::Duration;
 
 use base64::prelude::BASE64_STANDARD;
 use base64::Engine;
+use futures::{select, StreamExt};
 use ignition::browser::{Browser, BrowserConfig};
 use ignition::cdp::browser_protocol::fetch::{
     self, ContinueRequestParams, EventRequestPaused, FailRequestParams, FulfillRequestParams,
@@ -12,7 +13,6 @@ use ignition::cdp::browser_protocol::network::{
     self, ErrorReason, EventRequestWillBeSent, ResourceType,
 };
 use ignition::Page;
-use futures::{select, StreamExt};
 use tokio::time::sleep;
 
 const CONTENT: &str = "<html><head><meta http-equiv=\"refresh\" content=\"0;URL='http://www.example.com/'\" /></head><body><h1>TEST</h1></body></html>";

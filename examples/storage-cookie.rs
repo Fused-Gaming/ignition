@@ -1,7 +1,7 @@
+use futures::StreamExt;
 use ignition::browser::Browser;
 use ignition::browser::BrowserConfig;
 use ignition::cdp::browser_protocol::network::CookieParam;
-use futures::StreamExt;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {

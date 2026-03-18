@@ -2,8 +2,8 @@
 
 use std::time::Duration;
 
-use ignition::{cdp::js_protocol::runtime::EventConsoleApiCalled, BrowserConfig};
 use futures::StreamExt;
+use ignition::{cdp::js_protocol::runtime::EventConsoleApiCalled, BrowserConfig};
 
 const TARGET: &str = "https://www.microsoft.com/";
 

@@ -1,8 +1,8 @@
 use std::time::Duration;
 
+use futures::StreamExt;
 use ignition::browser::BrowserConfigBuilder;
 use ignition::Browser;
-use futures::StreamExt;
 
 #[tokio::main]
 async fn main() {

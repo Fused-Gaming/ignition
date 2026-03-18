@@ -1,6 +1,6 @@
 use anyhow::Result;
-use ignition::{Browser, BrowserConfig, IgnitionPage, IgnitionProfile};
 use futures::StreamExt;
+use ignition::{Browser, BrowserConfig, IgnitionPage, IgnitionProfile};
 use serde_json::Value;
 use std::time::Duration;
 
@@ -70,7 +70,8 @@ async fn main() -> Result<()> {
     println!("   ✅ Green flags: {}", green_count);
 
     // Check specific items
-    let webdriver: String = extract_string(&ignition.evaluate("String(navigator.webdriver)").await?);
+    let webdriver: String =
+        extract_string(&ignition.evaluate("String(navigator.webdriver)").await?);
     println!("   navigator.webdriver: {}", webdriver);
 
     let chrome_check: String = extract_string(&ignition.evaluate("String(!!window.chrome)").await?);

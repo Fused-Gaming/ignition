@@ -4,8 +4,8 @@
 //! with the ergonomic builder pattern.
 
 use anyhow::Result;
-use ignition::{Browser, BrowserConfig, IgnitionPage, IgnitionProfile, Gpu};
 use futures::StreamExt;
+use ignition::{Browser, BrowserConfig, Gpu, IgnitionPage, IgnitionProfile};
 use std::time::Duration;
 
 #[tokio::main]

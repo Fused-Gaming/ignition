@@ -1,8 +1,8 @@
 use std::sync::Arc;
 
-use ignition::browser::{Browser, BrowserConfig};
 use chromiumoxide_cdp::cdp::js_protocol::runtime::{AddBindingParams, EventBindingCalled};
 use futures::StreamExt;
+use ignition::browser::{Browser, BrowserConfig};
 use tokio::sync::Mutex;
 
 #[tokio::main]

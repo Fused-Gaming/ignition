@@ -6,7 +6,7 @@
  *
  * Auth: Bearer token via CRON_SECRET env var.
  * Vercel Cron: add to vercel.json → { "crons": [{ "path": "/api/cron/refresh-stats", "schedule": "0,15,30,45 * * * *" }] }
- * External cron (VPS): `*/15 * * * *` curl -H "Authorization: Bearer $CRON_SECRET" https://example.com/api/cron/refresh-stats
+ * External cron (VPS): Use cron expression for every 15 minutes (e.g., 0,15,30,45 * * * *) - curl -H "Authorization: Bearer $CRON_SECRET" https://example.com/api/cron/refresh-stats
  */
 
 import { NextRequest, NextResponse } from "next/server";

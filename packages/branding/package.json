@@ -2,9 +2,11 @@
   "name": "@fused-gaming/branding",
   "version": "1.0.0",
   "private": true,
-  "main": "./index.ts",
   "types": "./index.ts",
   "exports": {
-    ".": "./index.ts"
+    ".": {
+      "types": "./index.ts",
+      "default": "./index.ts"
+    }
   }
 }

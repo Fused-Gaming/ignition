@@ -108,7 +108,7 @@ export default async function RootLayout({
                 (function(){
                   var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
                   s1.async=true;
-                  s1.src='https://embed.tawk.to/${brand.chat.propertyId}/${brand.chat.widgetId}';
+                  s1.src='https://embed.tawk.to/' + ${JSON.stringify(brand.chat.propertyId)} + '/' + ${JSON.stringify(brand.chat.widgetId)};
                   s1.charset='UTF-8';
                   s1.setAttribute('crossorigin','*');
                   s0.parentNode.insertBefore(s1,s0);

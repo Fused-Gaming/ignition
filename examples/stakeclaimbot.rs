@@ -102,7 +102,7 @@ async fn main() -> Result<()> {
     // ------------------------------------------------------------------
     println!("[3/8] Checking for Turnstile challenge…");
     let turnstile_js = format!(
-        "document.querySelector('{}') !== null",
+        r#"document.querySelector("{}") !== null"#,
         TURNSTILE_SEL
     );
     let has_turnstile: Option<serde_json::Value> = ignition.evaluate(&turnstile_js).await?;
@@ -129,7 +129,7 @@ async fn main() -> Result<()> {
     let poll_js = format!(
         r#"
         (function() {{
-            const el = document.querySelector('{sel}');
+            const el = document.querySelector("{}");
             if (!el) return null;
             const rect = el.getBoundingClientRect();
             return {{
@@ -141,7 +141,7 @@ async fn main() -> Result<()> {
             }};
         }})()
         "#,
-        sel = CLAIM_BTN_SEL
+        CLAIM_BTN_SEL
     );
 
     let mut claim_info: Option<serde_json::Value> = None;
@@ -178,7 +178,7 @@ async fn main() -> Result<()> {
     // ------------------------------------------------------------------
     println!("[5/8] Checking cooldown timer…");
     let cooldown_js = format!(
-        "document.querySelector('{}')?.textContent?.trim() ?? null",
+        r#"document.querySelector("{}")?.textContent?.trim() ?? null"#,
         COOLDOWN_SEL
     );
     let cooldown: Option<serde_json::Value> = ignition.evaluate(&cooldown_js).await?;

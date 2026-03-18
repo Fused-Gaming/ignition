@@ -1,6 +1,6 @@
 use anyhow::Result;
-use ignition::{Browser, BrowserConfig, IgnitionPage};
 use futures::StreamExt;
+use ignition::{Browser, BrowserConfig, IgnitionPage};
 use std::time::Duration;
 
 #[tokio::main]

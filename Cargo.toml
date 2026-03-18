@@ -26,7 +26,7 @@ chromiumoxide_fetcher = { path = "chromiumoxide_fetcher", version = "0.8", defau
 serde_json = "1"
 which = "8"
 thiserror = "1"
-url = "2"
+url = ">=2, <2.5"
 base64 = "0.22"
 fnv = "1"
 futures-timer = "3"

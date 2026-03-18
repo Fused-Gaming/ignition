@@ -1,6 +1,6 @@
-use ignition::browser::{Browser, BrowserConfig};
 use chromiumoxide_cdp::cdp::browser_protocol::page::PrintToPdfParams;
 use futures::StreamExt;
+use ignition::browser::{Browser, BrowserConfig};
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {

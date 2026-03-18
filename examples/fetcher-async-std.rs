@@ -1,8 +1,8 @@
 use std::path::Path;
 
+use futures::StreamExt;
 use ignition::browser::{Browser, BrowserConfig};
 use ignition::fetcher::{BrowserFetcher, BrowserFetcherOptions};
-use futures::StreamExt;
 
 #[async_std::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {

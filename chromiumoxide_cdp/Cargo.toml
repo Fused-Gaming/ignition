@@ -16,7 +16,7 @@ serde0 = []
 
 [dev-dependencies]
 chromiumoxide_pdl = { path = "../chromiumoxide_pdl", version = "0.8" }
-ureq = "2.10.0"
+ureq = "=2.10.0"
 tempfile = "3.10.1"
 
 [dependencies]

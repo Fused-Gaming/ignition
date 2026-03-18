@@ -15,10 +15,7 @@
     "incremental": true,
     "plugins": [{ "name": "next" }],
     "paths": {
-      "@/*": ["./src/*"],
-      "@fused-gaming/ui": ["../../packages/ui/src/index.ts"],
-      "@fused-gaming/branding": ["../../packages/branding/index.ts"],
-      "@fused-gaming/copy": ["../../packages/copy/index.ts"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

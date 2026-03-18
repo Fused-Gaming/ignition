@@ -23,8 +23,6 @@ const nextConfig = {
       { protocol: "https", hostname: "cdn.trustpilot.xyz" },
     ],
   },
-  // Transpile local packages
-  transpilePackages: ["@fused-gaming/ui", "@fused-gaming/branding", "@fused-gaming/copy"],
 };
 
 module.exports = nextConfig;

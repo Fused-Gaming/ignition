@@ -4,14 +4,14 @@ use std::time::Duration;
 
 use base64::prelude::BASE64_STANDARD;
 use base64::Engine;
-use chaser_oxide::browser::{Browser, BrowserConfig};
-use chaser_oxide::cdp::browser_protocol::fetch::{
+use ignition::browser::{Browser, BrowserConfig};
+use ignition::cdp::browser_protocol::fetch::{
     self, ContinueRequestParams, EventRequestPaused, FailRequestParams, FulfillRequestParams,
 };
-use chaser_oxide::cdp::browser_protocol::network::{
+use ignition::cdp::browser_protocol::network::{
     self, ErrorReason, EventRequestWillBeSent, ResourceType,
 };
-use chaser_oxide::Page;
+use ignition::Page;
 use futures::{select, StreamExt};
 use tokio::time::sleep;
 

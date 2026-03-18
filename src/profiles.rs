@@ -6,9 +6,9 @@
 //! # Example
 //!
 //! ```rust
-//! use chaser-oxide::profiles::{ChaserProfile, Gpu};
+//! use ignition::profiles::{IgnitionProfile, Gpu};
 //!
-//! let profile = ChaserProfile::windows()
+//! let profile = IgnitionProfile::windows()
 //!     .chrome_version(130)
 //!     .gpu(Gpu::NvidiaRTX4080)
 //!     .memory_gb(16)
@@ -116,13 +116,13 @@ impl Os {
 /// # Example
 ///
 /// ```rust
-/// use chaser-oxide::profiles::{ChaserProfile, Gpu, Os};
+/// use ignition::profiles::{IgnitionProfile, Gpu, Os};
 ///
 /// // Quick preset
-/// let profile = ChaserProfile::windows().build();
+/// let profile = IgnitionProfile::windows().build();
 ///
 /// // Customized
-/// let profile = ChaserProfile::new(Os::Windows)
+/// let profile = IgnitionProfile::new(Os::Windows)
 ///     .chrome_version(130)
 ///     .gpu(Gpu::NvidiaRTX4080)
 ///     .memory_gb(32)
@@ -132,7 +132,7 @@ impl Os {
 ///     .build();
 /// ```
 #[derive(Debug, Clone)]
-pub struct ChaserProfile {
+pub struct IgnitionProfile {
     os: Os,
     chrome_version: u32,
     gpu: Gpu,
@@ -144,17 +144,17 @@ pub struct ChaserProfile {
     screen_height: u32,
 }
 
-impl Default for ChaserProfile {
+impl Default for IgnitionProfile {
     fn default() -> Self {
         Self::windows().build()
     }
 }
 
-impl ChaserProfile {
+impl IgnitionProfile {
     /// Create a new profile builder with the specified OS
     #[allow(clippy::new_ret_no_self)]
-    pub fn new(os: Os) -> ChaserProfileBuilder {
-        ChaserProfileBuilder {
+    pub fn new(os: Os) -> IgnitionProfileBuilder {
+        IgnitionProfileBuilder {
             os,
             chrome_version: 129,
             gpu: match os {
@@ -173,23 +173,35 @@ impl ChaserProfile {
     }
 
     /// Create a Windows profile with sensible defaults (RTX 3080, 8 cores)
-    pub fn windows() -> ChaserProfileBuilder {
+    pub fn windows() -> IgnitionProfileBuilder {
         Self::new(Os::Windows)
     }
 
     /// Create a macOS Intel profile
-    pub fn macos_intel() -> ChaserProfileBuilder {
+    pub fn macos_intel() -> IgnitionProfileBuilder {
         Self::new(Os::MacOSIntel).gpu(Gpu::AppleM1Pro)
     }
 
     /// Create a macOS Apple Silicon profile
-    pub fn macos_arm() -> ChaserProfileBuilder {
+    pub fn macos_arm() -> IgnitionProfileBuilder {
         Self::new(Os::MacOSArm).gpu(Gpu::AppleM4Max)
     }
 
     /// Create a Linux profile
-    pub fn linux() -> ChaserProfileBuilder {
+    pub fn linux() -> IgnitionProfileBuilder {
         Self::new(Os::Linux)
+    }
+
+    /// Create the Fused Gaming Ignition preset profile.
+    ///
+    /// A realistic Windows gaming PC fingerprint optimised for
+    /// stakereload.com, stakereloadxs.com, and gambareload.com.
+    /// Uses a high-trust NVIDIA RTX 3080 GPU with 16 GB RAM and 12 CPU cores.
+    pub fn fused_gaming() -> IgnitionProfileBuilder {
+        Self::windows()
+            .gpu(Gpu::NvidiaRTX3080)
+            .memory_gb(16)
+            .cpu_cores(12)
     }
 
     // Getters
@@ -239,7 +251,7 @@ impl ChaserProfile {
         let mut script = format!(
             r#"
             (function() {{
-                // === chaser-oxide HARDWARE HARMONY ===
+                // === Fused Gaming Ignition – HARDWARE HARMONY ===
                 // Profile: {ua}
 
                 // 0. CDP Marker Cleanup (run once at startup)
@@ -492,19 +504,19 @@ impl ChaserProfile {
     }
 }
 
-impl fmt::Display for ChaserProfile {
+impl fmt::Display for IgnitionProfile {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(
             f,
-            "ChaserProfile({:?}, Chrome {}, {:?})",
+            "IgnitionProfile({:?}, Chrome {}, {:?})",
             self.os, self.chrome_version, self.gpu
         )
     }
 }
 
-/// Builder for constructing `ChaserProfile` instances
+/// Builder for constructing `IgnitionProfile` instances
 #[derive(Debug, Clone)]
-pub struct ChaserProfileBuilder {
+pub struct IgnitionProfileBuilder {
     os: Os,
     chrome_version: u32,
     gpu: Gpu,
@@ -516,7 +528,7 @@ pub struct ChaserProfileBuilder {
     screen_height: u32,
 }
 
-impl ChaserProfileBuilder {
+impl IgnitionProfileBuilder {
     /// Set the Chrome version (default: 129)
     pub fn chrome_version(mut self, version: u32) -> Self {
         self.chrome_version = version;
@@ -561,8 +573,8 @@ impl ChaserProfileBuilder {
     }
 
     /// Build the final profile
-    pub fn build(self) -> ChaserProfile {
-        ChaserProfile {
+    pub fn build(self) -> IgnitionProfile {
+        IgnitionProfile {
             os: self.os,
             chrome_version: self.chrome_version,
             gpu: self.gpu,

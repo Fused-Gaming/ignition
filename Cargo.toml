@@ -1,15 +1,15 @@
 [package]
-name = "chaser-oxide"
+name = "ignition"
 version = "0.1.2"
 rust-version = "1.75"
 autotests = false
 edition = "2021"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
-description = "Undetectable browser automation library"
-authors = ["ccheshirecat"]
-repository = "https://github.com/ccheshirecat/chaser-oxide"
-keywords = ["chrome", "chromedriver", "puppeteer", "automation", "stealth"]
+description = "Fused Gaming Ignition – Stealth browser automation for gaming platforms"
+authors = ["Fused Gaming"]
+repository = "https://github.com/Fused-Gaming/ignition"
+keywords = ["chrome", "automation", "stealth", "gaming", "ignition"]
 categories = ["web-programming", "api-bindings", "development-tools::testing"]
 
 [dependencies]
@@ -78,6 +78,9 @@ _fetcher-native-async-std = [
   "chromiumoxide_fetcher/_native-async-std",
 ]
 _fetcher-native-tokio = ["fetcher", "chromiumoxide_fetcher/_native-tokio"]
+
+[[example]]
+name = "fused_gaming"
 
 [[example]]
 name = "wiki-async-std"

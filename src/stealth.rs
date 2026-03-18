@@ -13,7 +13,7 @@
 /// # Example
 ///
 /// ```rust
-/// use chaser-oxide::stealth::StealthProfile;
+/// use ignition::stealth::StealthProfile;
 ///
 /// struct LinuxChromeProfile;
 ///

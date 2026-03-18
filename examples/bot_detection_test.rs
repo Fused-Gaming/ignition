@@ -1,5 +1,5 @@
 use anyhow::Result;
-use chaser_oxide::{Browser, BrowserConfig, ChaserPage, ChaserProfile};
+use ignition::{Browser, BrowserConfig, IgnitionPage, IgnitionProfile};
 use futures::StreamExt;
 use serde_json::Value;
 use std::time::Duration;
@@ -10,7 +10,7 @@ async fn main() -> Result<()> {
     println!("================================\n");
 
     // Create Windows profile
-    let profile = ChaserProfile::windows().build();
+    let profile = IgnitionProfile::windows().build();
 
     // Launch HEADLESS browser (use new_headless_mode())
     let (browser, mut handler) = Browser::launch(
@@ -25,19 +25,19 @@ async fn main() -> Result<()> {
 
     // Create page and apply profile
     let page = browser.new_page("about:blank").await?;
-    let chaser = ChaserPage::new(page);
-    chaser.apply_profile(&profile).await?;
+    let ignition = IgnitionPage::new(page);
+    ignition.apply_profile(&profile).await?;
     println!("✅ Profile applied in HEADLESS mode\n");
 
     // ========== TEST 1: Sannysoft Bot Detection ==========
     println!("📊 TEST 1: Sannysoft Bot Detector");
     println!("   URL: https://bot.sannysoft.com");
-    chaser.goto("https://bot.sannysoft.com").await?;
+    ignition.goto("https://bot.sannysoft.com").await?;
     tokio::time::sleep(Duration::from_secs(4)).await;
 
     // Count red/green flags
     let red_count: u32 = extract_number(
-        &chaser
+        &ignition
             .evaluate(
                 r#"
         (() => {
@@ -52,7 +52,7 @@ async fn main() -> Result<()> {
     );
 
     let green_count: u32 = extract_number(
-        &chaser
+        &ignition
             .evaluate(
                 r#"
         (() => {
@@ -70,10 +70,10 @@ async fn main() -> Result<()> {
     println!("   ✅ Green flags: {}", green_count);
 
     // Check specific items
-    let webdriver: String = extract_string(&chaser.evaluate("String(navigator.webdriver)").await?);
+    let webdriver: String = extract_string(&ignition.evaluate("String(navigator.webdriver)").await?);
     println!("   navigator.webdriver: {}", webdriver);
 
-    let chrome_check: String = extract_string(&chaser.evaluate("String(!!window.chrome)").await?);
+    let chrome_check: String = extract_string(&ignition.evaluate("String(!!window.chrome)").await?);
     println!("   window.chrome exists: {}", chrome_check);
 
     println!();
@@ -81,13 +81,13 @@ async fn main() -> Result<()> {
     // ========== TEST 2: Are You Headless ==========
     println!("📊 TEST 2: AreYouHeadless Detection");
     println!("   URL: https://arh.antoinevastel.com/bots/areyouheadless");
-    chaser
+    ignition
         .goto("https://arh.antoinevastel.com/bots/areyouheadless")
         .await?;
     tokio::time::sleep(Duration::from_secs(3)).await;
 
     let headless_result = extract_string(
-        &chaser
+        &ignition
             .evaluate(
                 r#"
         (() => {
@@ -105,11 +105,11 @@ async fn main() -> Result<()> {
     // ========== TEST 3: Winna.com Turnstile ==========
     println!("📊 TEST 3: Cloudflare Turnstile (winna.com)");
     println!("   URL: https://winna.com");
-    chaser.goto("https://winna.com").await?;
+    ignition.goto("https://winna.com").await?;
     tokio::time::sleep(Duration::from_secs(6)).await;
 
     let turnstile_status = extract_string(
-        &chaser
+        &ignition
             .evaluate(
                 r#"
         (() => {
@@ -143,11 +143,11 @@ async fn main() -> Result<()> {
 
     println!("📊 TEST 4: DeviceAndBrowserInfo Bot Detection");
     println!("   URL: https://deviceandbrowserinfo.com/are_you_a_bot");
-    chaser
+    ignition
         .goto("https://deviceandbrowserinfo.com/are_you_a_bot")
         .await?;
     tokio::time::sleep(Duration::from_secs(4)).await;
-    let result = chaser.raw_page().find_element("#resultsBotTest").await;
+    let result = ignition.raw_page().find_element("#resultsBotTest").await;
     match result {
         Ok(element) => {
             let text = element
@@ -166,23 +166,23 @@ async fn main() -> Result<()> {
     // ========== TEST 5: Manual Stealth Checks ==========
     println!("📊 TEST 5: Manual Stealth Checks");
 
-    let ua = extract_string(&chaser.evaluate("navigator.userAgent").await?);
+    let ua = extract_string(&ignition.evaluate("navigator.userAgent").await?);
     println!("   User-Agent: {}", ua.chars().take(80).collect::<String>());
 
-    let platform = extract_string(&chaser.evaluate("navigator.platform").await?);
+    let platform = extract_string(&ignition.evaluate("navigator.platform").await?);
     println!("   Platform: {}", platform);
 
-    let cores = extract_number(&chaser.evaluate("navigator.hardwareConcurrency").await?);
+    let cores = extract_number(&ignition.evaluate("navigator.hardwareConcurrency").await?);
     println!("   Hardware Concurrency: {}", cores);
 
-    let memory = extract_number(&chaser.evaluate("navigator.deviceMemory").await?);
+    let memory = extract_number(&ignition.evaluate("navigator.deviceMemory").await?);
     println!("   Device Memory: {}GB", memory);
 
-    let plugins = extract_number(&chaser.evaluate("navigator.plugins.length").await?);
+    let plugins = extract_number(&ignition.evaluate("navigator.plugins.length").await?);
     println!("   Plugins: {}", plugins);
 
     let languages = extract_string(
-        &chaser
+        &ignition
             .evaluate("JSON.stringify(navigator.languages)")
             .await?,
     );
@@ -190,7 +190,7 @@ async fn main() -> Result<()> {
 
     // Check for CDP markers
     let cdp_count = extract_number(
-        &chaser
+        &ignition
             .evaluate(
                 r#"
         (() => {
@@ -210,13 +210,13 @@ async fn main() -> Result<()> {
 
     // Check chrome APIs
     let chrome_runtime = extract_string(
-        &chaser
+        &ignition
             .evaluate("String(!!window.chrome?.runtime?.connect)")
             .await?,
     );
     println!("   chrome.runtime.connect: {}", chrome_runtime);
 
-    let chrome_csi = extract_string(&chaser.evaluate("String(!!window.chrome?.csi)").await?);
+    let chrome_csi = extract_string(&ignition.evaluate("String(!!window.chrome?.csi)").await?);
     println!("   chrome.csi: {}", chrome_csi);
 
     println!();

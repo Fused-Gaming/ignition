@@ -1,5 +1,5 @@
 use crate::page::Page;
-use crate::profiles::ChaserProfile;
+use crate::profiles::IgnitionProfile;
 use anyhow::{anyhow, Result};
 use base64::{engine::general_purpose::STANDARD, Engine};
 use chromiumoxide_cdp::cdp::browser_protocol::fetch::{
@@ -30,10 +30,10 @@ pub struct Point {
 ///
 /// ```rust
 /// // Safe - uses isolated world, no Runtime.enable leak
-/// let title = chaser.evaluate("document.title").await?;
+/// let title = ignition.evaluate("document.title").await?;
 ///
 /// // Dangerous - only use raw_page().evaluate() if you know what you're doing
-/// let val = chaser.raw_page().evaluate("...").await?;  // Triggers Runtime.enable!
+/// let val = ignition.raw_page().evaluate("...").await?;  // Triggers Runtime.enable!
 /// ```
 ///
 /// All other `raw_page()` methods (get_cookies, screenshot, goto, etc.) are safe.
@@ -44,13 +44,13 @@ pub struct Point {
 /// - Bezier curve mouse movements with jitter
 /// - Realistic typing with variable delays
 #[derive(Clone, Debug)]
-pub struct ChaserPage {
+pub struct IgnitionPage {
     page: Page,
     mouse_pos: Arc<Mutex<Point>>,
 }
 
-impl ChaserPage {
-    /// Create a new ChaserPage wrapping the given Page.
+impl IgnitionPage {
+    /// Create a new IgnitionPage wrapping the given Page.
     pub fn new(page: Page) -> Self {
         Self {
             page,
@@ -63,7 +63,7 @@ impl ChaserPage {
     /// Access the underlying Page.
     ///
     /// Most methods are safe, **except `raw_page().evaluate()`** which
-    /// triggers `Runtime.enable` detection. Use `chaser.evaluate()` instead.
+    /// triggers `Runtime.enable` detection. Use `ignition.evaluate()` instead.
     #[doc(alias = "inner")]
     pub fn raw_page(&self) -> &Page {
         &self.page
@@ -106,16 +106,16 @@ impl ChaserPage {
     ///
     /// ```rust
     /// // Get page title
-    /// let title: String = chaser.evaluate("document.title").await?;
+    /// let title: String = ignition.evaluate("document.title").await?;
     ///
     /// // Check a value
-    /// let ua: String = chaser.evaluate("navigator.userAgent").await?;
+    /// let ua: String = ignition.evaluate("navigator.userAgent").await?;
     /// ```
     pub async fn evaluate(&self, script: &str) -> Result<Option<Value>> {
         self.evaluate_stealth(script).await
     }
 
-    /// Apply a ChaserProfile to this page in one clean call.
+    /// Apply an IgnitionProfile to this page in one clean call.
     ///
     /// This method:
     /// 1. Sets the User-Agent HTTP header
@@ -125,13 +125,13 @@ impl ChaserPage {
     ///
     /// # Example
     /// ```rust
-    /// let profile = ChaserProfile::windows().build();
+    /// let profile = IgnitionProfile::windows().build();
     /// let page = browser.new_page("about:blank").await?;
-    /// let chaser = ChaserPage::new(page);
-    /// chaser.apply_profile(&profile).await?;
-    /// chaser.inner().goto("https://example.com").await?;
+    /// let ignition = IgnitionPage::new(page);
+    /// ignition.apply_profile(&profile).await?;
+    /// ignition.goto("https://stakereload.com").await?;
     /// ```
-    pub async fn apply_profile(&self, profile: &ChaserProfile) -> Result<()> {
+    pub async fn apply_profile(&self, profile: &IgnitionProfile) -> Result<()> {
         // 1. Set the HTTP User-Agent header
         self.page
             .set_user_agent(&profile.user_agent())
@@ -161,13 +161,13 @@ impl ChaserPage {
     /// intercepted requests.
     ///
     /// # Arguments
-    /// * `url_pattern` - Glob pattern to match URLs (e.g., "*", "https://example.com/*")
+    /// * `url_pattern` - Glob pattern to match URLs (e.g., "*", "https://stakereload.com/*")
     /// * `resource_type` - Optional resource type filter (Document, Script, etc.)
     ///
     /// # Example
     /// ```rust
     /// // Intercept all document requests
-    /// chaser.enable_request_interception("*", Some(ResourceType::Document)).await?;
+    /// ignition.enable_request_interception("*", Some(ResourceType::Document)).await?;
     /// ```
     pub async fn enable_request_interception(
         &self,
@@ -224,7 +224,7 @@ impl ChaserPage {
     ///     </body>
     ///     </html>
     /// "#;
-    /// chaser.fulfill_request_html(request_id, fake_html, 200).await?;
+    /// ignition.fulfill_request_html(request_id, fake_html, 200).await?;
     /// ```
     pub async fn fulfill_request_html(
         &self,
@@ -299,7 +299,7 @@ impl ChaserPage {
             .execute(
                 CreateIsolatedWorldParams::builder()
                     .frame_id(frame_id)
-                    .world_name("chaser") // Our stealth world
+                    .world_name("ignition") // Our stealth world
                     .grant_univeral_access(true) // Access to page DOM
                     .build()
                     .unwrap(),
@@ -647,6 +647,10 @@ impl ChaserPage {
         Ok(())
     }
 }
+
+/// Backward-compatibility alias. Use [`IgnitionPage`] for new code.
+#[deprecated(note = "Use IgnitionPage instead")]
+pub type ChaserPage = IgnitionPage;
 
 #[derive(Debug)]
 pub struct BezierPath;

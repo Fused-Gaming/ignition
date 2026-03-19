@@ -98,7 +98,9 @@ async fn main() -> anyhow::Result<()> {
 | [gambareload.com](https://gambareload.com) | Gamba reload bonus tracker |
 | [stakeclaimbot.com](https://stakeclaimbot.com) | Stake claim bot automation |
 | [stakeclaimbot.com](https://stakeclaimbot.com) | Stake claim bot platform |
+| [stakeclaimbot.com](https://stakeclaimbot.com) | Stake claim bot platform |
 | [gambarewards.com](https://gambarewards.com) | Gamba rewards platform |
+| [hedgedhog.com](https://hedgedhog.com) | Hedged hog platform |
 | [hedgedhog.com](https://hedgedhog.com) | Hedged hog platform |
 | [hedgedhog.com](https://hedgedhog.com) | Hedged hog platform |
 

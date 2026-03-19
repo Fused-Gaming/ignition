@@ -100,7 +100,9 @@ async fn main() -> anyhow::Result<()> {
 | [stakeclaimbot.com](https://stakeclaimbot.com) | Stake claim bot platform |
 | [stakeclaimbot.com](https://stakeclaimbot.com) | Stake claim bot platform |
 | [stakeclaimbot.com](https://stakeclaimbot.com) | Stake claim bot platform |
+| [stakeclaimbot.com](https://stakeclaimbot.com) | Stake claim bot platform |
 | [gambarewards.com](https://gambarewards.com) | Gamba rewards platform |
+| [hedgedhog.com](https://hedgedhog.com) | Hedged hog platform |
 | [hedgedhog.com](https://hedgedhog.com) | Hedged hog platform |
 | [hedgedhog.com](https://hedgedhog.com) | Hedged hog platform |
 | [hedgedhog.com](https://hedgedhog.com) | Hedged hog platform |

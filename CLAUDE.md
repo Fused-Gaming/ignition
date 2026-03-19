@@ -12,7 +12,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **stakeclaimbot.com**
 - **stakeclaimbot.com**
 - **stakeclaimbot.com**
+- **stakeclaimbot.com**
 - **gambarewards.com**
+- **hedgedhog.com**
 - **hedgedhog.com**
 - **hedgedhog.com**
 - **hedgedhog.com**

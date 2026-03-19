@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Brand CSS variables (overridden per-brand in layout) ── */
+:root {
+  --brand-primary: #dc2626;
+  --brand-primary-dark: #b91c1c;
+  --brand-primary-hover: #ef4444;
+  --brand-bg: #000000;
+  --brand-bg-secondary: #111111;
+  --brand-bg-tertiary: #1a1a1a;
+  --brand-accent: #dc2626;
+  --brand-accent-secondary: #ef4444;
+  --brand-text: #f3f4f6;
+  --brand-muted: #9ca3af;
+  --brand-faint: #4b5563;
+  --brand-border: #222222;
+  --brand-border-glow: #dc2626;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+/* ── Base resets ── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-poppins), var(--font-inter), system-ui, sans-serif;
+  background-color: var(--brand-bg);
+  color: var(--brand-text);
+}
+
+/* ── Utility classes ── */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-semibold text-white transition-all duration-200;
+    background-color: var(--brand-primary);
+  }
+  .btn-primary:hover {
+    background-color: var(--brand-primary-hover);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-md font-semibold transition-all duration-200;
+    background-color: transparent;
+    border: 1px solid var(--brand-border);
+    color: var(--brand-text);
+  }
+  .btn-secondary:hover {
+    border-color: var(--brand-primary);
+    color: var(--brand-primary);
+  }
+
+  .card {
+    @apply rounded-xl p-6;
+    background-color: var(--brand-bg-secondary);
+    border: 1px solid var(--brand-border);
+  }
+
+  .card-hover {
+    @apply transition-all duration-300;
+  }
+  .card-hover:hover {
+    border-color: var(--brand-primary);
+  }
+
+  .section-heading {
+    @apply text-3xl sm:text-4xl font-bold;
+  }
+
+  .section-subheading {
+    @apply text-lg mt-3;
+    color: var(--brand-muted);
+  }
+
+  .badge {
+    @apply inline-block text-xs font-semibold px-2 py-0.5 rounded-full;
+    background-color: var(--brand-primary);
+    color: white;
+  }
+
+  .divider {
+    @apply my-4;
+    border-color: var(--brand-border);
+  }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--brand-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--brand-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-primary);
+}
+
+/* ── Modal backdrop ── */
+.modal-backdrop {
+  @apply fixed inset-0 z-50 flex items-center justify-center;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+}

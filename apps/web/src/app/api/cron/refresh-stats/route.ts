@@ -40,11 +40,12 @@ let lastRun: Date | null = null;
 export async function GET(req: NextRequest) {
   // ── Auth ────────────────────────────────────────────────────────────────────
   const cronSecret = process.env.CRON_SECRET;
-  if (cronSecret) {
-    const auth = req.headers.get("authorization");
-    if (auth !== `Bearer ${cronSecret}`) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
+  if (!cronSecret) {
+    return NextResponse.json({ error: "Cron secret not configured" }, { status: 500 });
+  }
+  const auth = req.headers.get("authorization");
+  if (auth !== `Bearer ${cronSecret}`) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const start = Date.now();
@@ -111,11 +112,12 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   // ── Auth ────────────────────────────────────────────────────────────────────
   const cronSecret = process.env.CRON_SECRET;
-  if (cronSecret) {
-    const auth = req.headers.get("authorization");
-    if (auth !== `Bearer ${cronSecret}`) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
+  if (!cronSecret) {
+    return NextResponse.json({ error: "Cron secret not configured" }, { status: 500 });
+  }
+  const auth = req.headers.get("authorization");
+  if (auth !== `Bearer ${cronSecret}`) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   if (!lastSnapshot) {

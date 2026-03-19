@@ -1,0 +1,10 @@
+{
+  "name": "@fused-gaming/tokens",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./src/tokens.ts",
+  "types": "./src/tokens.ts",
+  "exports": {
+    ".": "./src/tokens.ts"
+  }
+}

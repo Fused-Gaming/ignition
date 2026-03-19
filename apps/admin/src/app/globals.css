@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --admin-bg:        #0a0a0a;
+  --admin-surface:   #111111;
+  --admin-surface2:  #1a1a1a;
+  --admin-border:    #222222;
+  --admin-primary:   #dc2626;
+  --admin-text:      #f3f4f6;
+  --admin-muted:     #9ca3af;
+  --admin-faint:     #4b5563;
+  --admin-success:   #22c55e;
+  --admin-warning:   #f59e0b;
+  --admin-error:     #ef4444;
+}
+
+body {
+  background: var(--admin-bg);
+  color: var(--admin-text);
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Live preview iframe isolation */
+.brand-preview-frame {
+  border: 1px solid var(--admin-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Token color swatch */
+.color-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}

@@ -1,0 +1,160 @@
+{
+  "id": "stakereloadxs",
+  "name": "StakeReloadXS",
+  "domain": "stakereloadxs.com",
+  "tagline": "Xtremely Simple Reloads",
+  "subTagline": "Automated bonus claims for Stake.com and Stake.us in under 2 seconds.",
+  "ctaPrimary": "Try It Free",
+  "ctaSecondary": "Top Up Credits",
+  "tone": "aggressive",
+  "copyVariant": "urgency",
+  "languageDefault": "en",
+  "theme": {
+    "primary": "#dc2626",
+    "primaryDark": "#b91c1c",
+    "primaryHover": "#ef4444",
+    "background": "#000000",
+    "backgroundSecondary": "#111111",
+    "backgroundTertiary": "#1a1a1a",
+    "accent": "#dc2626",
+    "accentSecondary": "#ef4444",
+    "text": "#f3f4f6",
+    "textMuted": "#9ca3af",
+    "textFaint": "#4b5563",
+    "border": "#222222",
+    "borderGlow": "#dc2626"
+  },
+  "ui": {
+    "radius": "rounded",
+    "style": "dark-minimal",
+    "borderStyle": "solid",
+    "buttonStyle": "fill"
+  },
+  "animation": "smooth",
+  "fonts": {
+    "heading": "Poppins",
+    "body": "Inter"
+  },
+  "stats": [
+    { "value": "700+", "label": "Monthly Users" },
+    { "value": "25+", "label": "Years Combined Dev Experience" },
+    { "value": "0", "label": "Complaints" }
+  ],
+  "metrics": [
+    { "value": "400+", "label": "Weekly Clients Served" },
+    { "value": "$250,000", "label": "Weekly Claims" },
+    { "value": "100%", "label": "Customer Satisfaction" },
+    { "value": "3 Years", "label": "Serving Players" }
+  ],
+  "features": [
+    {
+      "icon": "server",
+      "title": "Private Servers",
+      "description": "Dedicated infrastructure for your account. Specialist setup available on request."
+    },
+    {
+      "icon": "zap",
+      "title": "Automatic Claims",
+      "description": "Fully automated bonus lifecycle. Claims trigger in under 2 seconds, every time."
+    },
+    {
+      "icon": "headphones",
+      "title": "24/7 Support",
+      "description": "Real support from the team behind the tool. Available around the clock via Telegram."
+    }
+  ],
+  "services": [
+    {
+      "id": "kyc",
+      "title": "KYC Account Fixes",
+      "description": "Resolve verification blocks fast. All levels handled.",
+      "tiers": [
+        { "label": "Level 2", "price": 75 },
+        { "label": "Level 3", "price": 500 },
+        { "label": "Level 4", "price": 1000 }
+      ]
+    },
+    {
+      "id": "wager",
+      "title": "Guaranteed $10,000 Wager",
+      "description": "We claim on $60M+ wagered on Stake. Your wager requirement handled.",
+      "tiers": []
+    },
+    {
+      "id": "affiliates",
+      "title": "Affiliates",
+      "description": "Refer players and earn up to 20% commission. No cap.",
+      "tiers": []
+    }
+  ],
+  "creditPackages": [
+    {
+      "id": "xs-id",
+      "name": "New XSID",
+      "credits": 5000,
+      "price": 5.00,
+      "boost": null,
+      "badge": null
+    },
+    {
+      "id": "50k",
+      "name": "50,000 Credits",
+      "credits": 50000,
+      "price": 50.00,
+      "boost": "5% Boost",
+      "badge": null
+    },
+    {
+      "id": "100k",
+      "name": "100,000 Credits",
+      "credits": 100000,
+      "price": 100.00,
+      "boost": "10% Boost",
+      "badge": "Popular"
+    },
+    {
+      "id": "200k",
+      "name": "200,000 Credits",
+      "credits": 200000,
+      "price": 200.00,
+      "boost": "15% Boost",
+      "badge": null
+    },
+    {
+      "id": "1m",
+      "name": "1,000,000 Credits",
+      "credits": 1000000,
+      "price": 1000.00,
+      "boost": "20% Boost",
+      "badge": "Best Value"
+    }
+  ],
+  "demoVideoId": "cLhoih4c5Lc",
+  "affiliateCommission": "20%",
+  "affiliateDescription": "Earn up to 20% referral commission. No cap on earnings.",
+  "payment": {
+    "provider": "nowpayments",
+    "apiEndpoint": "/api/payments/create",
+    "telegramRequired": true
+  },
+  "chat": {
+    "provider": "tawk",
+    "propertyId": "68013ff53e654c19146b2db9",
+    "widgetId": "1ip2e3m7d"
+  },
+  "nav": {
+    "links": [
+      { "label": "Home", "href": "/" },
+      { "label": "Team", "href": "/#team" },
+      { "label": "Shop", "href": "/#shop" },
+      { "label": "Signup Offers", "href": "/#offers" },
+      { "label": "Help Center", "href": "/#faq" }
+    ],
+    "cta": "Top Up"
+  },
+  "seo": {
+    "title": "StakeReloadXS - Xtremely Simple Reloads",
+    "description": "Automated bonus claims for Stake.com and Stake.us in under 2 seconds. 700+ monthly users. Zero complaints.",
+    "keywords": ["stake reload", "stake bonus", "stake claims", "stakereloadxs", "stake automation"]
+  }
+}

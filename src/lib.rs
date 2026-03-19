@@ -4,8 +4,10 @@
 //!
 //! Designed for use with [stakereload.com](https://stakereload.com),
 //! [stakereloadxs.com](https://stakereloadxs.com),
-//! [gambareload.com](https://gambareload.com), and
-//! [gambarewards.com](https://gambarewards.com).
+//! [gambareload.com](https://gambareload.com),
+//! [stakeclaimbot.com](https://stakeclaimbot.com),
+//! [gambarewards.com](https://gambarewards.com), and
+//! [hedgedhog.com](https://hedgedhog.com).
 //!
 //! # Example
 //! ```no_run

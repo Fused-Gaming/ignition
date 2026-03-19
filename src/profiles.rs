@@ -195,11 +195,23 @@ impl IgnitionProfile {
     /// Create the Fused Gaming Ignition preset profile.
     ///
     /// A realistic Windows gaming PC fingerprint optimised for
-    /// stakereload.com, stakereloadxs.com, and gambareload.com.
+    /// stakereload.com, stakereloadxs.com, gambareload.com, and gambarewards.com.
     /// Uses a high-trust NVIDIA RTX 3080 GPU with 16 GB RAM and 12 CPU cores.
     pub fn fused_gaming() -> IgnitionProfileBuilder {
         Self::windows()
             .gpu(Gpu::NvidiaRTX3080)
+            .memory_gb(16)
+            .cpu_cores(12)
+    }
+
+    /// Create a profile preset optimised for gambarewards.com.
+    ///
+    /// Uses the same high-trust Windows gaming fingerprint as `fused_gaming()`
+    /// but targeted specifically at the Gamba Rewards platform.
+    /// RTX 4080 GPU with 16 GB RAM and 12 CPU cores.
+    pub fn gambarewards() -> IgnitionProfileBuilder {
+        Self::windows()
+            .gpu(Gpu::NvidiaRTX4080)
             .memory_gb(16)
             .cpu_cores(12)
     }

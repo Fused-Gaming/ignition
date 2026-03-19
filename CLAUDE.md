@@ -9,6 +9,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **stakereload.com**
 - **stakereloadxs.com**
 - **gambareload.com**
+- **stakeclaimbot.com**
+- **stakeclaimbot.com**
+- **stakeclaimbot.com**
+- **stakeclaimbot.com**
+- **gambarewards.com**
+- **hedgedhog.com**
+- **hedgedhog.com**
+- **hedgedhog.com**
+- **hedgedhog.com**
 
 ## Build & Test Commands
 
